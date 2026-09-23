@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Asgard Rinjani Trekking</title>
+  <title>Asgard Rinjani Trekking | Mount Rinjani Adventure</title>
 
   <style>
     * {
@@ -19,153 +19,459 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: #f5f5f5;
+      background: #071116;
+      color: #f5f1e8;
       line-height: 1.6;
     }
+
+    :root {
+      --gold: #d99a45;
+      --gold-light: #f0b866;
+      --dark: #071116;
+      --dark-2: #0d1a20;
+      --text: #f5f1e8;
+      --muted: #aeb8ba;
+    }
+
+    /* NAVIGATION */
 
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      background: rgba(0,0,0,0.9);
-      padding: 18px 30px;
-      text-align: center;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(4, 10, 13, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(217,154,69,0.25);
       z-index: 1000;
-      border-bottom: 1px solid #b89b5e;
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .logo span {
+      display: block;
+      color: #aaa;
+      font-size: 8px;
+      letter-spacing: 3px;
+      margin-top: 2px;
+    }
+
+    nav .links {
+      display: flex;
+      gap: 25px;
     }
 
     nav a {
-      color: #d8b66a;
+      color: #eee;
       text-decoration: none;
-      margin: 0 12px;
-      font-size: 14px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
+
+    nav a:hover {
+      color: var(--gold-light);
+    }
+
+    .book-btn {
+      background: var(--gold);
+      color: #111 !important;
+      padding: 11px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    /* HERO */
 
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 25px 60px;
+      padding: 130px 7% 80px;
+      position: relative;
+      overflow: hidden;
+
       background:
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)),
-        linear-gradient(135deg, #172018, #050505);
+        linear-gradient(
+          90deg,
+          rgba(3,10,13,0.96) 0%,
+          rgba(3,10,13,0.78) 42%,
+          rgba(3,10,13,0.25) 100%
+        ),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85");
+
+      background-size: cover;
+      background-position: center;
     }
 
-    .hero h1 {
-      font-size: 48px;
-      color: #d8b66a;
-      margin-bottom: 15px;
-      letter-spacing: 2px;
+    .hero-content {
+      max-width: 720px;
     }
 
-    .hero h2 {
-      font-size: 22px;
-      font-weight: normal;
+    .eyebrow {
+      color: var(--gold-light);
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
       margin-bottom: 20px;
     }
 
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-      color: #dddddd;
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(50px, 8vw, 92px);
+      line-height: 0.95;
+      font-weight: normal;
+      margin-bottom: 25px;
     }
 
-    .button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 13px 28px;
-      background: #d8b66a;
-      color: #111;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
+    .hero h1 span {
+      color: var(--gold-light);
     }
+
+    .hero p {
+      max-width: 580px;
+      color: #d4d8d8;
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-block;
+      padding: 14px 25px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .primary-btn {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .secondary-btn {
+      border: 1px solid #aaa;
+      color: white;
+    }
+
+    /* INTRO BAR */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: #0b181e;
+      border-top: 1px solid #203138;
+      border-bottom: 1px solid #203138;
+    }
+
+    .feature {
+      padding: 28px 20px;
+      text-align: center;
+      border-right: 1px solid #203138;
+    }
+
+    .feature:last-child {
+      border-right: none;
+    }
+
+    .feature strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* SECTIONS */
 
     section {
-      padding: 80px 25px;
-      max-width: 1000px;
-      margin: auto;
+      padding: 100px 7%;
     }
 
-    section h2 {
-      text-align: center;
-      color: #d8b66a;
-      margin-bottom: 30px;
-      font-size: 30px;
+    .section-label {
+      color: var(--gold-light);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
     }
 
-    section p {
-      color: #cccccc;
-      text-align: center;
-      max-width: 750px;
-      margin: auto;
+    .section-title {
+      font-family: Georgia, serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: normal;
+      line-height: 1.05;
+      margin-bottom: 20px;
     }
 
-    .cards {
+    .section-text {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 16px;
+    }
+
+    /* TOURS */
+
+    .tours {
+      background: #081319;
+    }
+
+    .tour-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .tour-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 35px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
 
-    .card {
-      background: #151515;
-      border: 1px solid #3b3220;
-      border-radius: 12px;
-      padding: 30px 20px;
-      text-align: center;
+    .tour-card {
+      background: #101e25;
+      border: 1px solid #26363c;
+      overflow: hidden;
+      transition: 0.3s;
     }
 
-    .card h3 {
-      color: #d8b66a;
-      margin-bottom: 12px;
+    .tour-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
     }
 
-    .card p {
-      font-size: 14px;
+    .tour-image {
+      height: 240px;
+      background-size: cover;
+      background-position: center;
     }
 
-    .contact {
-      text-align: center;
-      background: #111;
-      border-top: 1px solid #302817;
-      border-bottom: 1px solid #302817;
+    .image-one {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80");
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: #888;
+    .image-two {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),
+        url("https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .image-three {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.2)),
+        url("https://images.unsplash.com/photo-1486911278844-a81c5267e227?auto=format&fit=crop&w=900&q=80");
+    }
+
+    .tour-content {
+      padding: 25px;
+    }
+
+    .tour-content h3 {
+      font-family: Georgia, serif;
+      font-size: 25px;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .tour-content p {
+      color: var(--muted);
       font-size: 13px;
     }
 
-    footer strong {
-      color: #d8b66a;
+    .tour-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--gold-light);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
-    @media (max-width: 600px) {
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+      background: #071116;
+    }
+
+    .about-image {
+      min-height: 520px;
+      background:
+        linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+      margin-top: 35px;
+      border-top: 1px solid #29383e;
+      padding-top: 25px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold-light);
+      font-family: Georgia, serif;
+      font-size: 28px;
+    }
+
+    .stat span {
+      color: #899598;
+      font-size: 11px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(rgba(4,12,15,0.88),rgba(4,12,15,0.94)),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cta .section-title {
+      max-width: 700px;
+      margin: 0 auto 20px;
+    }
+
+    .cta p {
+      color: #b7c0c1;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px 7%;
+      background: #040a0d;
+      border-top: 1px solid #223138;
+      text-align: center;
+      color: #7d888b;
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--gold-light);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
       nav {
-        padding: 14px 8px;
+        padding: 15px 5%;
       }
 
-      nav a {
-        margin: 0 5px;
-        font-size: 12px;
+      nav .links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 90vh;
+        padding: 130px 7% 70px;
+        background-position: 60% center;
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 55px;
       }
 
-      .hero h2 {
-        font-size: 18px;
+      .hero p {
+        font-size: 15px;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature {
+        border-bottom: 1px solid #203138;
       }
 
       section {
-        padding: 60px 20px;
+        padding: 70px 7%;
+      }
+
+      .tour-header {
+        display: block;
+      }
+
+      .tour-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image {
+        min-height: 350px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(3,1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .hero h1 {
+        font-size: 47px;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stats {
+        gap: 10px;
+      }
+
+      .stat strong {
+        font-size: 22px;
       }
     }
   </style>
@@ -174,94 +480,241 @@
 <body>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#trekking">Trekking</a>
-    <a href="#plan">Plan</a>
-    <a href="#contact">Contact</a>
+    <div class="logo">
+      ASGARD
+      <span>RINJANI TREKKING</span>
+    </div>
+
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#tours">Tours</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <a href="#contact" class="book-btn">BOOK NOW</a>
   </nav>
 
-  <header class="hero">
-    <div>
-      <h1>ASGARD RINJANI</h1>
 
-      <h2>Rinjani Trekking & Adventure</h2>
+  <header class="hero" id="home">
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Hike · Explore · Experience
+      </div>
+
+      <h1>
+        Mount Rinjani<br>
+        <span>More Than A Trek</span>
+      </h1>
 
       <p>
-        Discover the beauty of Mount Rinjani with a local trekking experience
-        in Lombok, Indonesia.
+        Discover Mount Rinjani with Asgard Rinjani Trekking.
+        Experience Lombok's dramatic landscapes, local culture,
+        and unforgettable mountain adventures.
       </p>
 
-      <a href="#plan" class="button">PLAN YOUR TREK</a>
+      <div class="hero-buttons">
+        <a href="#tours" class="primary-btn">
+          Explore Our Tours →
+        </a>
+
+        <a href="#about" class="secondary-btn">
+          Discover Asgard
+        </a>
+      </div>
+
     </div>
   </header>
 
-  <section id="about">
-    <h2>About Asgard</h2>
 
-    <p>
-      Asgard Rinjani Trekking is a local trekking and adventure agency
-      based in Lombok, Indonesia. We help travelers experience Mount Rinjani
-      through memorable, safe and authentic adventures.
-    </p>
-  </section>
+  <div class="features">
 
-  <section id="trekking">
-    <h2>Our Trekking Experience</h2>
+    <div class="feature">
+      <strong>LOCAL EXPERIENCE</strong>
+      <span>Authentic Lombok adventure</span>
+    </div>
 
-    <div class="cards">
+    <div class="feature">
+      <strong>PERSONAL SERVICE</strong>
+      <span>Guidance throughout your journey</span>
+    </div>
 
-      <div class="card">
-        <h3>Mount Rinjani</h3>
-        <p>
-          Experience the incredible landscapes and natural beauty
-          of Mount Rinjani.
-        </p>
+    <div class="feature">
+      <strong>MOUNTAIN ADVENTURE</strong>
+      <span>Explore Mount Rinjani</span>
+    </div>
+
+    <div class="feature">
+      <strong>RESPONSIBLE TRAVEL</strong>
+      <span>Respect nature & communities</span>
+    </div>
+
+  </div>
+
+
+  <section class="tours" id="tours">
+
+    <div class="tour-header">
+
+      <div>
+        <div class="section-label">Featured Tours</div>
+
+        <h2 class="section-title">
+          Choose Your<br>
+          Rinjani Adventure
+        </h2>
       </div>
 
-      <div class="card">
-        <h3>Local Experience</h3>
-        <p>
-          Explore Lombok with local knowledge and genuine hospitality.
-        </p>
+      <p class="section-text">
+        Explore trekking experiences designed for travelers
+        who want to discover the beauty of Mount Rinjani.
+      </p>
+
+    </div>
+
+
+    <div class="tour-grid">
+
+      <div class="tour-card">
+
+        <div class="tour-image image-one"></div>
+
+        <div class="tour-content">
+          <h3>Summit Trekking</h3>
+
+          <p>
+            Challenge yourself and experience the incredible
+            landscapes around Mount Rinjani.
+          </p>
+
+          <a href="#contact" class="tour-link">
+            Explore Tour →
+          </a>
+        </div>
+
       </div>
 
-      <div class="card">
-        <h3>Adventure</h3>
-        <p>
-          Create unforgettable memories through an authentic
-          Rinjani trekking adventure.
-        </p>
+
+      <div class="tour-card">
+
+        <div class="tour-image image-two"></div>
+
+        <div class="tour-content">
+          <h3>Crater Lake</h3>
+
+          <p>
+            Discover the spectacular Segara Anak crater lake
+            surrounded by the mountains of Rinjani.
+          </p>
+
+          <a href="#contact" class="tour-link">
+            Explore Tour →
+          </a>
+        </div>
+
+      </div>
+
+
+      <div class="tour-card">
+
+        <div class="tour-image image-three"></div>
+
+        <div class="tour-content">
+          <h3>Rinjani Adventure</h3>
+
+          <p>
+            Experience a deeper journey through the landscapes
+            and unforgettable trails of Mount Rinjani.
+          </p>
+
+          <a href="#contact" class="tour-link">
+            Explore Tour →
+          </a>
+        </div>
+
       </div>
 
     </div>
+
   </section>
 
-  <section id="plan">
-    <h2>Plan Your Trek</h2>
 
-    <p>
-      Ready to experience Mount Rinjani?
-      Contact Asgard Rinjani Trekking and start planning your adventure
-      in Lombok, Indonesia.
-    </p>
+  <section class="about" id="about">
 
-    <div style="text-align:center;">
-      <a href="#contact" class="button">CONTACT US</a>
+    <div class="about-image"></div>
+
+    <div class="about-content">
+
+      <div class="section-label">
+        About Asgard
+      </div>
+
+      <h2 class="section-title">
+        Your Local Partner
+        for Rinjani Trekking
+      </h2>
+
+      <p>
+        Asgard Rinjani Trekking is a local trekking and adventure
+        agency based in Lombok, Indonesia.
+      </p>
+
+      <p>
+        We believe that trekking Mount Rinjani is more than reaching
+        a summit. It is about experiencing nature, meeting local people,
+        and creating memories that last long after the journey ends.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>RINJANI</strong>
+          <span>Mountain Adventure</span>
+        </div>
+
+        <div class="stat">
+          <strong>LOMBOK</strong>
+          <span>Local Experience</span>
+        </div>
+
+        <div class="stat">
+          <strong>100%</strong>
+          <span>Local Team</span>
+        </div>
+
+      </div>
+
     </div>
+
   </section>
 
-  <section id="contact" class="contact">
-    <h2>Contact Asgard</h2>
+
+  <section class="cta" id="contact">
+
+    <div class="section-label">
+      Start Your Journey
+    </div>
+
+    <h2 class="section-title">
+      Ready to Explore Rinjani?
+    </h2>
 
     <p>
-      Asgard Rinjani Trekking<br>
-      Lombok, Indonesia
+      Plan your Mount Rinjani adventure with Asgard Rinjani Trekking
+      and discover Lombok from a different perspective.
     </p>
+
+    <a href="https://wa.me/" class="primary-btn">
+      Contact Us on WhatsApp →
+    </a>
+
   </section>
+
 
   <footer>
     © 2026 <strong>Asgard Rinjani Trekking</strong><br>
-    Rinjani Trekking & Adventure in Lombok, Indonesia
+    Mount Rinjani Trekking & Adventure · Lombok, Indonesia
   </footer>
 
 </body>
