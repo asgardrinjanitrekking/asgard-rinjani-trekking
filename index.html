@@ -206,6 +206,38 @@
             font-size: 15px;
         }
 
+        .package-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .package-content {
+            padding: 0 5px 5px;
+        }
+
+        .package-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background: #D4AF37;
+            color: #080808;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .package-button:hover {
+            background: #F2D675;
+            transform: translateY(-2px);
+        }
+        
         /* GALLERY */
         .gallery {
             background: #0d0d0d;
@@ -411,13 +443,24 @@
         <div class="package-grid">
 
     <div class="package-card">
-    <a href="2-days-1-night.html" style="text-decoration: none; color: inherit;">
+    <img
+        src="20260502_075447.jpg"
+        alt="Mount Rinjani trekking"
+        class="package-image"
+    >
+
+    <div class="package-content">
         <h3>2 Days 1 Night</h3>
+
         <p>
-            A short and exciting Rinjani trekking experience
-            for adventurous travelers.
+            A short and exciting Rinjani trekking
+            experience for adventurous travelers.
         </p>
-    </a>
+
+        <a href="2-days-1-night.html" class="package-button">
+            VIEW PACKAGE
+        </a>
+    </div>
 </div>
 
 <div class="package-card">
