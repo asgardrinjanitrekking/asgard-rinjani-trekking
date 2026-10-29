@@ -8,96 +8,6 @@
 
     <meta name="description" content="Asgard Rinjani Trekking - Explore Mount Rinjani with a trusted local trekking team in Lombok, Indonesia.">
 
-    /* HAMBURGER MENU */
-.menu-toggle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 6px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 30px;
-    height: 4px;
-    background: #D4AF37;
-    border-radius: 10px;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: #D4AF37;
-    text-decoration: none;
-}
-
-    /* MENU RESPONSIVE */
-.nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 7%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    min-width: 180px;
-    background: #080808;
-    border: 1px solid rgba(212,175,55,0.4);
-    border-radius: 6px;
-    padding: 10px 0;
-    z-index: 1000;
-}
-
-.nav-links.active {
-    display: flex;
-}
-
-.nav-links a {
-    display: block;
-    width: 100%;
-    padding: 14px 20px;
-    box-sizing: border-box;
-}
-
-.nav-links a:hover {
-    background: #1a1a1a;
-}
-
-nav {
-    position: sticky;
-    top: 0;
-}
-
-    /* NAVIGATION MENU FIX */
-nav {
-    box-sizing: border-box;
-}
-
-.menu-toggle {
-    flex-shrink: 0;
-}
-
-.nav-links {
-    box-sizing: border-box;
-    top: 100%;
-    right: 7%;
-}
-
-@media (min-width: 769px) {
-    .nav-links {
-        min-width: 200px;
-    }
-}
-    
     <style>
         * {
             margin: 0;
@@ -457,6 +367,90 @@ nav {
                 letter-spacing: 1px;
             }
         }
+        /* HAMBURGER MENU */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: #D4AF37;
+    border-radius: 10px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #D4AF37;
+    text-decoration: none;
+}
+
+    /* MENU RESPONSIVE */
+.nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 7%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 180px;
+    background: #080808;
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 6px;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links a {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    box-sizing: border-box;
+}
+
+.nav-links a:hover {
+    background: #1a1a1a;
+}
+
+    /* NAVIGATION MENU FIX */
+nav {
+    box-sizing: border-box;
+}
+
+.menu-toggle {
+    flex-shrink: 0;
+}
+
+.nav-links {
+    box-sizing: border-box;
+    top: 100%;
+    right: 7%;
+}
+
+@media (min-width: 769px) {
+    .nav-links {
+        min-width: 200px;
+    }
+}
     </style>
 </head>
 
