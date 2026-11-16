@@ -1,0 +1,111 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import BookingModal from "../components/BookingModal.astro";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+}
+
+const title = Astro.props.title ?? `${site.name} | Mount Rinjani Lombok`;
+const description = Astro.props.description ?? site.description;
+const basePath = import.meta.env.BASE_URL.replace(/\/+$/, "");
+const routePath = Astro.url.pathname.startsWith(`${basePath}/`)
+  ? Astro.url.pathname.slice(basePath.length)
+  : Astro.url.pathname;
+const pagePath = routePath.replace(/^\/+|\/+$/g, "");
+const canonicalUrl = new URL(
+  `${basePath}/${pagePath}${pagePath ? "/" : ""}`,
+  Astro.site ?? Astro.url,
+).href;
+const ogImage = Astro.props.ogImage ?? `${basePath}/images/optimized/hero-hotsprings02.webp`;
+const ogImageAlt = Astro.props.ogImageAlt ?? "Natural hot springs beside Segara Anak Lake on Mount Rinjani";
+const ogImageUrl = new URL(ogImage, Astro.site ?? Astro.url).href;
+const websiteUrl = new URL(`${basePath}/`, Astro.site ?? Astro.url).href;
+const travelAgencyId = `${websiteUrl}#travel-agency`;
+const packageNames: Record<string, string> = {
+  "2d1n-crater-rim": "Senaru Crater Rim",
+  "2d1n-second-summit": "Second Summit",
+  "2d1n-summit": "Mount Rinjani Summit",
+  "3d2n-sembalun-senaru": "Sembalun to Senaru",
+  "3d2n-torean": "Sembalun to Torean",
+  "4d3n-rinjani": "Grand Rinjani",
+};
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TravelAgency",
+      "@id": travelAgencyId,
+      name: site.name,
+      url: websiteUrl,
+      logo: new URL(`${basePath}/images/logoweb.png`, Astro.site ?? Astro.url).href,
+      telephone: site.phone,
+      email: site.email,
+      address: site.address,
+    },
+    ...(pagePath === ""
+      ? [{
+          "@type": "WebSite",
+          "@id": `${websiteUrl}#website`,
+          name: site.name,
+          url: websiteUrl,
+          publisher: { "@id": travelAgencyId },
+        }]
+      : []),
+    ...(packageNames[pagePath]
+      ? [{
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: websiteUrl },
+            { "@type": "ListItem", position: 2, name: packageNames[pagePath], item: canonicalUrl },
+          ],
+        }]
+      : []),
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/asgard-rinjani-trekking/favicon.svg" />
+    <link rel="icon" href="/asgard-rinjani-trekking/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+    <meta name="generator" content={Astro.generator} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <WhatsAppButton />
+    <BookingModal />
+  </body>
+</html>

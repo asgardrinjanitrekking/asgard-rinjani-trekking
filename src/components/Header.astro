@@ -1,0 +1,193 @@
+---
+import { site, whatsappLink } from "../data/site";
+
+const links = [
+  { href: "/asgard-rinjani-trekking/", label: "Home" },
+  { href: "/asgard-rinjani-trekking/#about", label: "About" },
+  { href: "/asgard-rinjani-trekking/#packages", label: "Packages" },
+  { href: "/asgard-rinjani-trekking/#gallery", label: "Gallery" },
+  { href: "/asgard-rinjani-trekking/#contact", label: "Contact" },
+];
+---
+
+<header class="navbar" id="site-header">
+  <div class="nav-inner">
+    <a href="/asgard-rinjani-trekking/" class="logo">
+      <img src="/asgard-rinjani-trekking/images/logoweb.png" alt={`${site.name} logo`} />
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-menu" id="nav-menu">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+      <a class="nav-cta" href={whatsappLink("Hello Asgard Rinjani Trekking, I would like to book a Mount Rinjani trek.")}>
+        Book via WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .navbar.is-scrolled {
+    background: rgba(7, 7, 7, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom-color: var(--line);
+  }
+
+  .nav-inner {
+    width: var(--container);
+    margin-inline: auto;
+    min-height: var(--header-h);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .logo img {
+    width: 118px;
+    height: auto;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-menu a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    transition: color 0.3s ease;
+  }
+
+  .nav-menu a:hover {
+    color: var(--gold);
+  }
+
+  .nav-cta {
+    padding: 10px 16px;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    letter-spacing: 0.12em;
+    font-size: 0.68rem !important;
+    text-transform: uppercase;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: #0b0b0b !important;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--gold);
+    margin: 6px 0;
+    transition: 0.3s ease;
+  }
+
+  @media (max-width: 900px) {
+    .logo img {
+      width: 96px;
+    }
+
+    .menu-toggle {
+      display: block;
+      z-index: 2;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(7, 7, 7, 0.98);
+      flex-direction: column;
+      gap: 0;
+      padding: 12px 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    .nav-menu a {
+      width: 100%;
+      text-align: center;
+      padding: 14px 20px;
+    }
+
+    .nav-cta {
+      margin-top: 8px;
+      width: min(280px, calc(100% - 40px));
+    }
+  }
+
+  @media (max-width: 700px) {
+    .logo img {
+      width: 84px;
+    }
+
+    .nav-inner {
+      gap: 12px;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector("#site-header");
+  const toggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector("#nav-menu");
+
+  const onScroll = () => {
+    header?.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
+
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = menu?.classList.toggle("active");
+    toggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
+    toggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+      toggle?.setAttribute("aria-expanded", "false");
+      toggle?.setAttribute("aria-label", "Open menu");
+    });
+  });
+</script>

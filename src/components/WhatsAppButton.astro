@@ -1,0 +1,62 @@
+---
+import { whatsappLink } from "../data/site";
+---
+
+<a
+  class="wa-float"
+  href={whatsappLink("Hello Asgard Rinjani Trekking, I would like to book a Mount Rinjani trek.")}
+  target="_blank"
+  rel="noreferrer"
+  aria-label="Book via WhatsApp"
+>
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path
+      fill="currentColor"
+      d="M19.11 17.47c-.28-.14-1.64-.8-1.9-.9s-.44-.14-.63.14-.72.9-.88 1.08-.33.21-.61.07a7.7 7.7 0 0 1-2.26-1.4 8.45 8.45 0 0 1-1.56-1.94c-.16-.28 0-.43.12-.57s.28-.33.42-.5.18-.28.28-.47.05-.35 0-.5-.63-1.51-.86-2.07c-.23-.54-.46-.47-.63-.48h-.54c-.19 0-.5.07-.76.35s-1 1-1 2.43 1.02 2.82 1.16 3.02a13.4 13.4 0 0 0 5.14 4.5c1.92.84 2.67.91 3.64.77.59-.09 1.64-.67 1.87-1.32s.23-1.2.16-1.32-.25-.19-.53-.33zM16.03 29c-2.27 0-4.5-.61-6.46-1.77L3 29l1.8-6.4A12.94 12.94 0 1 1 16.03 29zm0-23.57A10.62 10.62 0 0 0 6.4 22.17l.24.4-1.07 3.8 3.9-1.02.38.23A10.62 10.62 0 1 0 16.03 5.43z"
+    ></path>
+  </svg>
+  <span>Book now</span>
+</a>
+
+<style>
+  .wa-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px 12px 14px;
+    border-radius: 999px;
+    background: #25d366;
+    color: #07210f;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  .wa-float svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .wa-float:hover {
+    transform: translateY(-3px);
+  }
+
+  @media (max-width: 700px) {
+    .wa-float span {
+      display: none;
+    }
+
+    .wa-float {
+      padding: 14px;
+      right: calc(16px + env(safe-area-inset-right, 0px));
+      bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+</style>

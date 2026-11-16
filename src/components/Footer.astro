@@ -1,0 +1,112 @@
+---
+import { site, whatsappLink } from "../data/site";
+
+const navigation = [
+  { label: "Home", href: "/asgard-rinjani-trekking/" },
+  { label: "About", href: "/asgard-rinjani-trekking/#about" },
+  { label: "Trekking Packages", href: "/asgard-rinjani-trekking/#packages" },
+  { label: "Gallery", href: "/asgard-rinjani-trekking/#gallery" },
+  { label: "Contact", href: "/asgard-rinjani-trekking/#contact" },
+];
+
+const popularTreks = [
+  {
+    title: "Mount Rinjani Trekking 3 Days 2 Nights – Sembalun, Summit, Segara Anak Lake & Torean",
+    description: "Explore Mount Rinjani via Sembalun, reach the summit, discover Segara Anak Lake, and descend through Torean.",
+    image: "/asgard-rinjani-trekking/images/optimized/package-trn10.webp",
+    href: "/asgard-rinjani-trekking/3d2n-torean/",
+  },
+  {
+    title: "Mount Rinjani Summit Trekking 2 Days 1 Night",
+    description: "Experience the Mount Rinjani summit adventure with an overnight trekking experience.",
+    image: "/asgard-rinjani-trekking/images/optimized/package-summit12.webp",
+    href: "/asgard-rinjani-trekking/2d1n-summit/",
+  },
+  {
+    title: "Mount Rinjani Senaru Crater Rim Trekking 2 Days 1 Night",
+    description: "Explore Senaru's tropical forest and enjoy panoramic views of Segara Anak Lake from Senaru Crater Rim.",
+    image: "/asgard-rinjani-trekking/images/optimized/package-senaru09.webp",
+    href: "/asgard-rinjani-trekking/2d1n-crater-rim/",
+  },
+];
+---
+
+<footer class="footer" aria-label="Site footer">
+  <div class="container footer-grid">
+    <section class="footer-brand" aria-labelledby="footer-brand-title">
+      <h2 class="footer-title" id="footer-brand-title">Asgard Rinjani</h2>
+      <a class="brand-logo" href="/asgard-rinjani-trekking/" aria-label={`${site.name} home`}>
+        <img src="/asgard-rinjani-trekking/images/logoweb.png" alt={`${site.name} logo`} width="280" height="120" loading="lazy" decoding="async" />
+      </a>
+      <p class="brand-description">Discover the beauty of Mount Rinjani with Asgard Rinjani Trekking. Experience unforgettable adventures with our local trekking team from Lombok, Indonesia.</p>
+    </section>
+
+    <nav class="footer-nav" aria-labelledby="footer-nav-title">
+      <h2 class="footer-title" id="footer-nav-title">Discover Rinjani</h2>
+      {navigation.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+
+    <section class="footer-contact" aria-labelledby="footer-contact-title">
+      <h2 class="footer-title" id="footer-contact-title">Get in Touch</h2>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <p>{site.address}</p>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">WhatsApp</span>
+        <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">{site.phone}</a>
+      </div>
+    </section>
+
+    <section class="footer-treks" aria-labelledby="footer-treks-title">
+      <h2 class="footer-title" id="footer-treks-title">Popular Treks</h2>
+      <div class="popular-list">
+        {popularTreks.map((trek) => (
+          <a class="popular-trek" href={trek.href}>
+            <img src={trek.image} alt={`${trek.title} landscape`} width="96" height="72" loading="lazy" decoding="async" />
+            <span class="popular-copy">
+              <span class="popular-name">{trek.title}</span>
+              <span class="popular-description">{trek.description}</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <div class="container footer-base">
+    <p>&copy; 2026 Asgard Rinjani Trekking. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .footer{background:radial-gradient(ellipse at 12% 0%,rgba(212,175,55,.055),transparent 36%),#050605;border-top:1px solid rgba(212,175,55,.2);padding:36px 0 24px}
+  .footer-grid{display:grid;grid-template-columns:1.2fr .78fr 1fr 1.5fr;gap:clamp(26px,4vw,58px);padding-bottom:48px}
+  .footer-title{margin:0 0 23px;color:var(--gold-soft);font-size:.69rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase}
+  .brand-logo{display:inline-block;margin:-5px 0 12px}
+  .brand-logo img{display:block;width:142px;height:auto;object-fit:contain}
+  .brand-description,.footer-contact p,.footer-contact a,.footer-nav>a{margin:0;color:#aaa69d;font-size:.86rem;line-height:1.75}
+  .brand-description{max-width:290px}
+  .footer-nav>a{display:block;width:fit-content;margin:0 0 10px;text-decoration:none;transition:color .2s}
+  .footer a:hover{color:var(--gold-soft)}
+  .contact-item{margin:0 0 17px}
+  .contact-label{display:block;margin-bottom:4px;color:#77736b;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase}
+  .footer-contact a{text-decoration:none;overflow-wrap:anywhere}
+  .popular-list{display:grid;gap:13px}
+  .popular-trek{display:grid;grid-template-columns:82px minmax(0,1fr);gap:13px;align-items:center;color:inherit;text-decoration:none}
+  .popular-trek img{display:block;width:82px;height:64px;object-fit:cover;border:1px solid rgba(212,175,55,.23);filter:saturate(.82);transition:filter .25s,border-color .25s}
+  .popular-trek:hover img{filter:saturate(1);border-color:rgba(212,175,55,.7)}
+  .popular-copy,.popular-name,.popular-description{display:block;min-width:0}
+  .popular-name{margin-bottom:3px;color:#e6e0d3;font-family:var(--font-display);font-size:1rem;line-height:1.15}
+  .popular-description{color:#8f8b82;font-size:.72rem;line-height:1.45}
+  .popular-trek:focus-visible,.footer-nav>a:focus-visible,.footer-contact a:focus-visible,.brand-logo:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px}
+  .footer-base{padding-top:20px;border-top:1px solid rgba(255,255,255,.08);color:#77736b;font-size:.75rem;letter-spacing:.04em}
+  .footer-base p{margin:0}
+  @media(max-width:1050px){.footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:38px 48px}.footer-treks{grid-column:1/-1}.popular-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.popular-trek{grid-template-columns:74px minmax(0,1fr);gap:10px}.popular-trek img{width:74px;height:60px}}
+  @media(max-width:620px){.footer{padding:24px 0 22px}.footer-grid{grid-template-columns:1fr;gap:32px;padding-bottom:34px}.footer-treks{grid-column:auto}.popular-list{grid-template-columns:1fr;gap:14px}.popular-trek{grid-template-columns:82px minmax(0,1fr)}.popular-trek img{width:82px;height:64px}.footer-title{margin-bottom:16px}.brand-description{max-width:420px}.footer-base{text-align:center;line-height:1.6}}
+  @media(prefers-reduced-motion:reduce){.footer-nav>a,.popular-trek img{transition:none}}
+</style>
