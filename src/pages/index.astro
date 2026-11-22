@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import PackageCard from "../components/PackageCard.astro";
 import { site, whatsappLink } from "../data/site";
+import { getGalleryImageVariants } from "../data/galleryImageVariants";
 
 const packages = [
   { bookingId: "torean", title: "Torean Traverse", duration: "3 Days 2 Nights", route: "Sembalun \u00B7 Summit \u00B7 Segara Anak \u00B7 Torean", summary: "An unforgettable journey across Rinjani's spectacular landscapes, from summit dawn to the sacred crater lake and the dramatic Torean descent.", difficulty: "Challenging", image: "/asgard-rinjani-trekking/images/optimized/package-trn10.webp", detailHref: "/asgard-rinjani-trekking/3d2n-torean/" },
@@ -102,7 +103,7 @@ const trekFeatures = [
     <section class="section about" id="about" aria-labelledby="about-title">
       <div class="container about-layout">
         <figure class="about-visual">
-          <img class="about-photo" src="/asgard-rinjani-trekking/images/senaru01.jpg" alt="Local trekking team and guests gathered at a mountain campsite at sunset" loading="lazy" decoding="async" width="4000" height="2250" />
+          <img class="about-photo" src="/asgard-rinjani-trekking/images/optimized/gallery/senaru01-800.webp" srcset="/asgard-rinjani-trekking/images/optimized/gallery/senaru01-800.webp 800w, /asgard-rinjani-trekking/images/optimized/gallery/senaru01-2200.webp 2200w" sizes="(max-width: 760px) calc(100vw - 36px), (max-width: 1100px) 45vw, 42vw" alt="Local trekking team and guests gathered at a mountain campsite at sunset" loading="lazy" decoding="async" width="800" height="450" />
           <figcaption class="about-photo-caption"><span>Rinjani, shared</span><span>Lombok, Indonesia</span></figcaption>
         </figure>
 
@@ -174,7 +175,7 @@ const trekFeatures = [
     <section class="section gallery" id="gallery">
       <div class="container">
         <div class="gallery-heading"><div><p class="eyebrow">The mountain, in moments</p><h2 class="section-heading">Rinjani, as it is <em>lived.</em></h2></div><p class="section-copy">Summit light, crater water, volcanic slopes, and the long walk home.</p></div>
-        <div class="gallery-grid">{gallery.map((item, index) => <figure class={item.shape}><button class="gallery-trigger" type="button" aria-label={`Open image ${index + 1} of ${gallery.length}: ${item.alt}`} data-gallery-index={index}><img src={item.src} alt={item.alt} loading="lazy" decoding="async" width="1600" height="1100" /></button></figure>)}</div>
+        <div class="gallery-grid">{gallery.map((item, index) => { const variants = getGalleryImageVariants(item.src); return <figure class={item.shape}><button class="gallery-trigger" type="button" aria-label={`Open image ${index + 1} of ${gallery.length}: ${item.alt}`} data-gallery-index={index}><img src={variants.thumbnail} data-gallery-full={variants.full} data-gallery-width={variants.fullWidth} data-gallery-height={variants.fullHeight} alt={item.alt} loading="lazy" decoding="async" width={variants.width ?? 1600} height={variants.height ?? 1100} /></button></figure>; })}</div>
       </div>
     </section>
 
@@ -270,7 +271,14 @@ const trekFeatures = [
     activeGalleryIndex = (index + galleryTriggers.length) % galleryTriggers.length;
     const thumbnail = galleryTriggers[activeGalleryIndex].querySelector("img");
     if (!thumbnail) return;
-    lightboxImage.src = thumbnail.currentSrc || thumbnail.src;
+    lightboxImage.src = thumbnail.dataset.galleryFull || thumbnail.currentSrc || thumbnail.src;
+    if (thumbnail.dataset.galleryWidth && thumbnail.dataset.galleryHeight) {
+      lightboxImage.width = Number(thumbnail.dataset.galleryWidth);
+      lightboxImage.height = Number(thumbnail.dataset.galleryHeight);
+    } else {
+      lightboxImage.removeAttribute("width");
+      lightboxImage.removeAttribute("height");
+    }
     lightboxImage.alt = thumbnail.alt;
     lightboxAlt.textContent = thumbnail.alt;
     lightboxCount.textContent = `${activeGalleryIndex + 1} / ${galleryTriggers.length}`;
