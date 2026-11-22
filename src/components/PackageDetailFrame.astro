@@ -1,0 +1,226 @@
+---
+interface Detail {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  packageId?: string;
+  title: string;
+  heading: string;
+  route: string;
+  subtitle: string;
+  note: string;
+  heroImage: string;
+  heroAlt: string;
+  gallery: { src: string; alt: string }[];
+  galleryTitle: string;
+  galleryDescription: string;
+  bookingHref: string;
+  details: Detail[];
+}
+
+const { packageId: providedPackageId, title, heading, route, subtitle, note, heroImage, heroAlt, gallery, galleryTitle, galleryDescription, bookingHref, details } = Astro.props;
+const packageIdsByImage: Record<string, string> = {
+  "/asgard-rinjani-trekking/images/optimized/package-trn10.webp": "torean",
+  "/asgard-rinjani-trekking/images/optimized/package-senaru09.webp": "senaru-crater-rim",
+  "/asgard-rinjani-trekking/images/optimized/package-ss03.webp": "second-summit",
+  "/asgard-rinjani-trekking/images/optimized/package-summit12.webp": "summit",
+  "/asgard-rinjani-trekking/images/optimized/package-smbln05.webp": "sembalun-senaru",
+  "/asgard-rinjani-trekking/images/optimized/package-trn03.webp": "4d3n-rinjani",
+};
+const packageId = providedPackageId ?? packageIdsByImage[heroImage] ?? "";
+const detailValue = (label: string) => details.find((item) => item.label.toLowerCase() === label.toLowerCase())?.value ?? "Confirm with our team";
+const photos = [{ src: heroImage, alt: heroAlt }, ...gallery.filter((photo) => photo.src !== heroImage)];
+---
+
+<main class="package-page">
+  <div class="package-layout">
+    <header class="package-intro">
+        <p class="package-kicker">Mount Rinjani · Lombok, Indonesia</p>
+        <h1>{heading}</h1>
+        <p class="package-route">{route}</p>
+        <p class="package-tagline">{subtitle}</p>
+        <p class="package-note">{note}</p>
+        <section class="package-gallery" data-package-gallery aria-label={galleryTitle}>
+          <div class="gallery-heading"><h2>{galleryTitle}</h2><p>{galleryDescription}</p></div>
+          <div class="gallery-stage">
+            <figure class="package-photo-frame">
+              <img class="package-photo" src={heroImage} alt={heroAlt} fetchpriority="high" decoding="async" />
+              <figcaption>Asgard Rinjani Trekking <span>·</span> {detailValue("Duration")}</figcaption>
+            </figure>
+            <button class="gallery-arrow gallery-previous" type="button" data-gallery-previous aria-label="Previous package photo"><span aria-hidden="true">‹</span></button>
+            <span class="gallery-counter" aria-live="polite">1 / {photos.length}</span>
+            <button class="gallery-arrow gallery-next" type="button" data-gallery-next aria-label="Next package photo"><span aria-hidden="true">›</span></button>
+          </div>
+          <div class="gallery-thumbnails" role="group" aria-label="Choose a package photo">
+            {photos.map((photo, index) => (
+              <button class:list={["gallery-thumb", { "is-current": index === 0 }]} type="button" data-gallery-index={index} data-gallery-src={photo.src} data-gallery-alt={photo.alt} aria-label={`Show package photo ${index + 1}`} aria-pressed={index === 0}>
+                <img src={photo.src} alt="" loading="lazy" decoding="async" />
+              </button>
+            ))}
+          </div>
+        </section>
+        <nav class="package-intro-actions" aria-label="Package actions">
+          <a class="package-action-primary" href="#booking-options">View tour options <span aria-hidden="true">↓</span></a>
+        </nav>
+    </header>
+
+    <div class="package-sections">
+      <slot />
+    </div>
+
+    <section class="package-booking" id="booking-options" aria-label="Package booking information">
+      <div class="booking-card">
+        <p class="booking-card-kicker">Your Rinjani journey</p>
+        <h2>{title}</h2>
+        <dl class="booking-facts">
+          <div><dt>Duration</dt><dd>{detailValue("Duration")}</dd></div>
+          <div><dt>Difficulty</dt><dd>{detailValue("Difficulty")}</dd></div>
+          <div><dt>Starting point</dt><dd>{detailValue("Starting point")}</dd></div>
+          <div><dt>Finishing point</dt><dd>{detailValue("Finishing point")}</dd></div>
+          <div><dt>Maximum elevation</dt><dd>{detailValue("Maximum elevation")}</dd></div>
+          <div><dt>Camping location</dt><dd>{detailValue("Camping location")}</dd></div>
+          <div><dt>Group / private</dt><dd>Ask us about available group dates and private options.</dd></div>
+        </dl>
+        <section class="price-options" aria-label="Tour pricing options">
+          <article class="price-option">
+            <h3 class="price-option-heading price-option-heading-green">Trek Only</h3>
+            <div class="price-option-body">
+              <p class="price-option-description">Includes trekking transfers between the Senaru office and the trek starting and ending points. Pickup and drop-off from other locations in Lombok are not included.</p>
+              <p class="price-value"><strong>Contact for pricing</strong><span>per person</span></p>
+            </div>
+          </article>
+          <article class="price-option">
+            <h3 class="price-option-heading price-option-heading-blue"><span>Trek + Transportation</span><em class="recommended-choice">A Recommended Choice</em></h3>
+            <div class="price-option-body">
+              <p class="price-option-description">Includes trekking transfers, plus pickup from your accommodation or chosen location in Lombok to our Senaru office and return drop-off after the trek.</p>
+              <p class="price-value"><strong>Contact for pricing</strong><span>per person</span></p>
+            </div>
+          </article>
+        </section>
+        <button class="booking-card-button" type="button" data-booking-open data-booking-package={packageId} aria-haspopup="dialog" aria-controls="booking-modal">Check availability <span aria-hidden="true">↗</span></button>
+        <p class="booking-card-note">Our team will confirm availability, route arrangements, and package details.</p>
+      </div>
+    </section>
+  </div>
+  <div class="mobile-booking-bar" aria-label="Quick booking">
+    <p><strong>Contact for pricing</strong><span>per person</span></p>
+    <button type="button" data-booking-open data-booking-package={packageId} aria-haspopup="dialog" aria-controls="booking-modal" aria-label={`Check availability for ${title}`}>Check availability <span aria-hidden="true">↗</span></button>
+  </div>
+</main>
+
+<style>
+  .package-page{min-height:100vh;background:radial-gradient(ellipse at 2% 0%,rgba(35,77,55,.28),transparent 38%),linear-gradient(180deg,#0b1711 0%,#09110d 44%,#080b09 100%);padding:calc(var(--header-h) + 28px) 0 24px}
+  .package-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:start;width:min(1320px,calc(100% - 8vw));margin-inline:auto}
+  .package-intro,.package-sections{width:min(70%,900px);max-width:100%;margin-inline:auto}
+  .package-intro{min-width:0;padding:0 0 22px}
+  .package-kicker,.booking-card-kicker{margin:0 0 12px;color:var(--gold-soft);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+  .package-intro h1{max-width:900px;margin:0;color:#f5f0e5;font:500 clamp(2.7rem,5.1vw,5rem)/.98 var(--font-display);letter-spacing:-.025em;overflow-wrap:anywhere}
+  .package-route{max-width:820px;margin:17px 0 7px;color:#e3dccd;font:400 clamp(1.25rem,2.2vw,1.85rem)/1.35 var(--font-display)}
+  .package-tagline{max-width:780px;margin:8px 0 9px;color:#b1b9ae;font-size:.86rem;line-height:1.65}
+  .package-note{max-width:780px;margin:0 0 23px;color:#a9b3aa;font-size:.85rem;line-height:1.65}
+  .package-gallery{min-width:0}
+  .gallery-heading{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:0 0 12px}
+  .gallery-heading h2{margin:0;color:#f0ebdf;font:500 1.55rem/1.1 var(--font-display)}
+  .gallery-heading p{max-width:290px;margin:0;color:#a9b3aa;font-size:.69rem;line-height:1.45;text-align:right}
+  .gallery-stage{position:relative;isolation:isolate}
+  .package-photo-frame{position:relative;isolation:isolate;aspect-ratio:1.78;min-height:270px;margin:0;overflow:hidden;border:1px solid rgba(212,175,55,.27);border-radius:4px;background:#102017;box-shadow:0 24px 70px rgba(0,0,0,.32)}
+  .package-photo-frame::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(180deg,transparent,rgba(4,8,6,.68));pointer-events:none}
+  .package-photo{width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.86) brightness(.9)}
+  .package-photo-frame figcaption{position:absolute;z-index:1;right:18px;bottom:14px;left:18px;color:#e9e2d3;font-size:.59rem;letter-spacing:.16em;text-transform:uppercase}
+  .package-photo-frame figcaption span{padding-inline:7px;color:var(--gold-soft)}
+  .gallery-arrow{position:absolute;z-index:2;top:50%;display:grid;place-items:center;width:45px;height:45px;padding:0;transform:translateY(-50%);border:1px solid rgba(230,199,106,.65);border-radius:50%;background:rgba(6,13,9,.76);color:#f2dc98;font:300 2rem/1 var(--font-display);cursor:pointer;transition:background .2s,color .2s,scale .2s}
+  .gallery-arrow:hover{background:var(--gold);color:#10140f;scale:1.06}
+  .gallery-arrow:focus-visible,.gallery-thumb:focus-visible{outline:2px solid #f3ead6;outline-offset:3px}
+  .gallery-previous{left:16px}.gallery-next{right:16px}
+  .gallery-counter{position:absolute;z-index:2;right:15px;bottom:14px;padding:5px 9px;border:1px solid rgba(255,255,255,.15);background:rgba(5,8,6,.72);color:#f1ecdf;font-size:.62rem;letter-spacing:.1em;font-variant-numeric:tabular-nums}
+  .gallery-thumbnails{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:10px}
+  .gallery-thumb{position:relative;min-width:0;aspect-ratio:1.55;padding:0;overflow:hidden;border:1px solid rgba(212,175,55,.2);border-radius:2px;background:#102017;cursor:pointer;opacity:.7;transition:opacity .2s,border-color .2s,transform .2s}
+  .gallery-thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.8);transition:transform .35s,filter .3s}
+  .gallery-thumb:hover,.gallery-thumb.is-current{border-color:var(--gold-soft);opacity:1}
+  .gallery-thumb:hover img{transform:scale(1.04);filter:saturate(1)}
+  .package-intro-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+  .package-intro-actions a{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:45px;padding:11px 17px;border:1px solid rgba(212,175,55,.45);color:#e9e2d3;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;transition:background .2s,border-color .2s,color .2s}
+  .package-intro-actions a:hover{border-color:var(--gold);background:rgba(212,175,55,.09);color:var(--gold-soft)}
+  .package-intro-actions .package-action-primary{background:linear-gradient(135deg,#d4af37,#a67c32);border-color:transparent;color:#11140f}
+  .package-intro-actions .package-action-primary:hover{background:linear-gradient(135deg,#e6c76a,#c59b36);color:#11140f}
+  .package-booking{min-width:0;padding-top:8px;scroll-margin-top:calc(var(--header-h) + 20px)}
+  .booking-card{padding:27px 24px 23px;border:1px solid rgba(212,175,55,.35);border-radius:4px;background:linear-gradient(155deg,rgba(17,39,27,.98),rgba(10,20,14,.98));box-shadow:0 24px 65px rgba(0,0,0,.34)}
+  .booking-card-kicker{margin-bottom:10px;color:var(--gold)}
+  .booking-card h2{margin:0 0 22px;color:#f4eedf;font:500 clamp(1.7rem,2.4vw,2.35rem)/1.04 var(--font-display);overflow-wrap:anywhere}
+  .booking-facts{margin:0 0 19px}
+  .booking-facts>div{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+  .booking-facts dt{margin-bottom:3px;color:#a7ad9f;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase}
+  .booking-facts dd{margin:0;color:#f1ecdf;font:500 1.08rem/1.3 var(--font-display);overflow-wrap:anywhere}
+  .booking-facts>div:last-child dd{font:400 .77rem/1.55 var(--font-body);color:#c2c7bc}
+  .price-options{display:grid;gap:11px;margin:0 0 18px}
+  .price-option{overflow:hidden;border:1px solid rgba(212,175,55,.19);background:rgba(4,10,6,.56)}
+  .price-option-heading{margin:0;padding:11px 13px;color:#f1f3ec;font-size:.66rem;font-weight:600;letter-spacing:.08em;line-height:1.4;text-transform:uppercase;overflow-wrap:anywhere}
+  .price-option-heading-blue{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .recommended-choice{flex:none;color:#D8C18B;font-size:12px;font-style:italic;font-weight:400;letter-spacing:normal;line-height:1.35;text-transform:none;white-space:nowrap}
+  .price-option-heading-green{background:#17462e}
+  .price-option-heading-blue{background:#193b59}
+  .price-option-body{padding:12px 13px 13px}
+  .price-value{display:flex;justify-content:space-between;align-items:baseline;gap:9px;margin:0 0 5px}
+  .price-value strong{color:var(--gold-soft);font:500 1.12rem/1.2 var(--font-display)}
+  .price-value span{flex:none;color:#9ca69a;font-size:.61rem}
+  .price-option-description{margin:0 0 5px;color:#b5beb2;font-size:.7rem;line-height:1.55;overflow-wrap:anywhere}
+  .booking-card-button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:54px;padding:14px 16px;border:0;background:linear-gradient(135deg,#16823b,#0d642c);color:#fff;font:700 .68rem/1.2 var(--font-body);letter-spacing:.11em;text-align:left;text-decoration:none;text-transform:uppercase;cursor:pointer;transition:filter .2s,transform .2s}
+  .booking-card-button:hover{filter:brightness(1.12);transform:translateY(-2px)}
+  .booking-card-button:focus-visible,.package-intro-actions a:focus-visible{outline:2px solid #f3ead6;outline-offset:3px}
+  .booking-card-note{margin:13px 0 0;color:#959d91;font-size:.68rem;line-height:1.55}
+  .package-sections{min-width:0}
+  .mobile-booking-bar{display:none}
+  .package-sections :global(.section){padding:46px 0;border-bottom:1px solid rgba(212,175,55,.13)}
+  .package-sections :global(.overview){position:relative;isolation:isolate;background:#050505}
+  .package-sections :global(.overview)::before{position:absolute;z-index:-1;inset-block:0;left:50%;width:100vw;transform:translateX(-50%);background:#050505;content:"";pointer-events:none}
+  .package-sections :global(.container){width:100%;max-width:none;margin-inline:0}
+  .package-sections :global(.section-intro){margin-bottom:26px}
+  .package-sections :global(.section-heading){font-size:clamp(2.2rem,3.7vw,3.65rem)}
+  .package-sections :global(.section-copy){font-size:.94rem;line-height:1.75}
+  .package-sections :global(.facilities){background:linear-gradient(145deg,rgba(19,43,30,.42),rgba(8,13,10,.38))}
+  .package-sections :global(.inclusion-note){margin:-12px 0 24px;padding:14px 16px;border-left:2px solid var(--gold);background:rgba(212,175,55,.045);color:#b9c0b5;font-size:.79rem;line-height:1.65}
+  .package-sections :global(.trekking-info){background:linear-gradient(145deg,rgba(17,39,27,.4),rgba(7,12,9,.35))}
+  .package-sections :global(.info-grid){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+  .package-sections :global(.info-grid article){min-width:0;padding:20px 18px;border:1px solid rgba(212,175,55,.18);background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008))}
+  .package-sections :global(.info-label){display:block;margin-bottom:10px;color:var(--gold-soft);font:500 1.2rem/1.15 var(--font-display)}
+  .package-sections :global(.info-grid article p){margin:0;color:#aeb6aa;font-size:.78rem;line-height:1.65}
+  .package-sections :global(.equipment-loan-list li){font-size:.76rem;font-weight:500;line-height:1.65;color:#aeb6aa}
+  .package-sections :global(.booking){margin-top:32px;padding:42px 24px;border:1px solid rgba(212,175,55,.25);border-radius:4px}
+  @media(max-width:980px){.package-layout{width:min(900px,calc(100% - 8vw));gap:28px}.package-intro,.package-sections{width:100%}.booking-card{padding:24px}.booking-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}.booking-card h2{max-width:680px}.package-sections :global(.section){padding:44px 0}.package-sections :global(.info-grid){grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:700px){.package-page{padding-top:calc(var(--header-h) + 20px);padding-bottom:16px}.package-layout{width:calc(100% - 36px);gap:22px}.package-intro h1{font-size:clamp(2.45rem,11vw,3.7rem)}.package-route{font-size:1.2rem}.package-photo-frame{aspect-ratio:1.18;min-height:0}.gallery-heading{display:block}.gallery-heading p{margin-top:5px;text-align:left}.gallery-arrow{width:40px;height:40px}.gallery-previous{left:10px}.gallery-next{right:10px}.gallery-thumbnails{gap:6px}.gallery-thumb{aspect-ratio:1.2}.package-intro-actions{display:grid;grid-template-columns:1fr}.package-intro-actions a{width:100%}.booking-card{padding:22px 19px}.booking-facts{grid-template-columns:1fr 1fr;column-gap:13px}.booking-facts dd{font-size:1rem}.package-sections :global(.section){padding:36px 0}.package-sections :global(.booking){margin-top:26px;padding:34px 19px}.package-sections :global(.gallery-grid){grid-template-columns:1fr 1fr}.package-sections :global(.info-grid){grid-template-columns:1fr}.package-sections :global(.inclusion-note){margin:0 0 18px}.mobile-booking-bar{position:fixed;z-index:1100;right:auto;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;display:flex;align-items:center;justify-content:space-between;gap:clamp(10px,4vw,24px);width:min(560px,calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)));min-height:64px;padding:9px 12px;border:1px solid rgba(212,175,55,.42);border-radius:4px;background:rgba(9,18,13,.97);box-shadow:0 10px 30px rgba(0,0,0,.42);backdrop-filter:blur(12px);transform:translateX(-50%)}.mobile-booking-bar p{display:flex;min-width:0;flex:1;flex-direction:column;gap:3px;margin:0}.mobile-booking-bar p strong{overflow:hidden;color:var(--gold-soft);font:500 .9rem/1.15 var(--font-display);text-overflow:ellipsis;white-space:nowrap}.mobile-booking-bar p span{color:#a9b3aa;font-size:.62rem}.mobile-booking-bar>a{display:flex;flex:none;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 clamp(10px,3vw,16px);background:linear-gradient(135deg,#16823b,#0d642c);color:#fff;font-size:clamp(.56rem,2.5vw,.66rem);font-weight:700;letter-spacing:.035em;text-decoration:none;text-transform:uppercase;white-space:nowrap}.mobile-booking-bar>a:focus-visible{outline:2px solid #f3ead6;outline-offset:3px}:global(body:has(.package-page) .wa-float){bottom:calc(88px + env(safe-area-inset-bottom))}}
+  @media(max-width:420px){.booking-facts{grid-template-columns:1fr}.package-photo-frame{aspect-ratio:1.05}.gallery-thumbnails{grid-template-columns:repeat(4,minmax(0,1fr))}.package-sections :global(.gallery-grid){grid-template-columns:1fr}}
+  @media(max-width:380px){.mobile-booking-bar{gap:8px;padding:8px 10px}.mobile-booking-bar p strong{font-size:.8rem}.mobile-booking-bar>a{min-height:44px;padding-inline:9px;font-size:.54rem}}
+  @media(max-width:700px){.mobile-booking-bar>button{display:flex;flex:none;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 clamp(10px,3vw,16px);border:0;background:linear-gradient(135deg,#16823b,#0d642c);color:#fff;font:700 clamp(.56rem,2.5vw,.66rem)/1.2 var(--font-body);letter-spacing:.035em;text-align:center;text-transform:uppercase;white-space:nowrap;cursor:pointer}.mobile-booking-bar>button:focus-visible{outline:2px solid #f3ead6;outline-offset:3px}}
+  @media(max-width:380px){.mobile-booking-bar>button{min-height:44px;padding-inline:9px;font-size:.54rem}}
+  @media(min-width:1024px){.package-intro,.package-sections{width:min(100%,1120px);max-width:100%;margin-inline:auto}}
+  @media(prefers-reduced-motion:reduce){.package-intro-actions a,.booking-card-button{transition:none}.booking-card-button:hover{transform:none}}
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-package-gallery]").forEach((gallery) => {
+    const mainImage = gallery.querySelector<HTMLImageElement>(".package-photo");
+    const counter = gallery.querySelector<HTMLElement>(".gallery-counter");
+    const thumbnails = [...gallery.querySelectorAll<HTMLButtonElement>(".gallery-thumb")];
+    let activeIndex = 0;
+
+    const showPhoto = (nextIndex: number) => {
+      if (!mainImage || thumbnails.length === 0) return;
+      activeIndex = (nextIndex + thumbnails.length) % thumbnails.length;
+      const selected = thumbnails[activeIndex];
+      mainImage.src = selected.dataset.gallerySrc ?? "";
+      mainImage.alt = selected.dataset.galleryAlt ?? "Mount Rinjani trekking landscape";
+      if (counter) counter.textContent = `${activeIndex + 1} / ${thumbnails.length}`;
+      thumbnails.forEach((thumbnail, index) => {
+        const isCurrent = index === activeIndex;
+        thumbnail.classList.toggle("is-current", isCurrent);
+        thumbnail.setAttribute("aria-pressed", String(isCurrent));
+      });
+    };
+
+    thumbnails.forEach((thumbnail, index) => thumbnail.addEventListener("click", () => showPhoto(index)));
+    gallery.querySelector<HTMLButtonElement>("[data-gallery-previous]")?.addEventListener("click", () => showPhoto(activeIndex - 1));
+    gallery.querySelector<HTMLButtonElement>("[data-gallery-next]")?.addEventListener("click", () => showPhoto(activeIndex + 1));
+  });
+</script>

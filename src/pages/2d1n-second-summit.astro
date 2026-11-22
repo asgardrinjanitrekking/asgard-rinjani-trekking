@@ -1,0 +1,386 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PackageDetailFrame from "../components/PackageDetailFrame.astro";
+import { site, whatsappLink } from "../data/site";
+
+const title = "Mount Rinjani Second Summit Trekking - 2 Days 1 Night";
+const bookingHref = whatsappLink(
+  "Hello Asgard Rinjani Trekking, I would like to enquire about the Mount Rinjani Second Summit Trekking - 2 Days 1 Night. Please share current availability, the confirmed itinerary, difficulty guidance, and package details.",
+);
+
+const highlights = [
+  "A two-day, one-night Mount Rinjani journey",
+  "An overnight stay on the mountain; campsite to be confirmed",
+  "A closer look at Rinjani's volcanic landscape, subject to weather and visibility",
+];
+
+const itinerary = [
+  {
+    day: "Day 0",
+    title: "Arrival in Senaru & Pre-Trek Preparation",
+    intro: "Day 0 is reserved for arriving in Senaru and preparing for the Senaru Crater Rim trek. The pick-up schedule and estimated transfer times below can help you plan your journey; please confirm with Asgard Rinjani Trekking whether transport from your location is included in your booking and coordinate the arrangements with the team. Pre-trek accommodation in Senaru is not included in the package price, so please arrange your own stay unless separate arrangements have been confirmed.",
+    pickupSchedule: [
+      { location: "Kuta Lombok", time: "09:00 AM or 04:00–05:00 PM" },
+      { location: "Senggigi / Mataram", time: "10:00–11:00 AM or 04:00 PM" },
+      { location: "Tetebatu / Pringgasela", time: "09:00–10:00 AM" },
+      { location: "Bangsal Harbor / Gili Islands", time: "Around 11:30 AM (following your boat arrival)" },
+    ],
+    recommendation: "If a morning transfer is available and included in your confirmed booking, we recommend choosing it where possible. This allows time to relax, explore Senaru Village and rest before the trek.",
+    transferTimes: [
+      { location: "Lombok International Airport (LOP) / Lembar Harbor", time: "Approximately 3.5 hours" },
+      { location: "Mataram / Senggigi", time: "Approximately 2 hours" },
+      { location: "Bangsal Harbor", time: "Approximately 1 hour 25 minutes" },
+      { location: "Kuta Lombok / Tetebatu", time: "Approximately 4 hours" },
+      { location: "Labuan Lombok (Kayangan Harbor)", time: "Approximately 2 hours" },
+    ],
+    accommodation: "Pre-trek accommodation in Senaru is not included in the trekking package price. Guests are responsible for arranging their own stay unless separate arrangements have been made. If included in your confirmed package, the evening preparation may include a trekking guide briefing, equipment inspection and overview of the adventure; coordinate the details with the team.",
+    details: [
+    ],
+    summary: [],
+  },
+  {
+    day: "Day 1",
+    title: "Day 1: Senaru Village to Senaru Crater Rim",
+    paragraphs: [
+      'Your adventure with <strong>Asgard Rinjani Trekking</strong> begins in Senaru, where you will meet your trekking guide and team before heading to the entrance of Mount Rinjani National Park at Jebak Gawah. After completing the registration process and a short trekking briefing, you will begin your journey through one of the most beautiful tropical rainforests in Lombok.',
+      "The first part of the trek follows a shaded forest trail beneath towering tropical trees. The peaceful surroundings, accompanied by birdsong, flowing streams, and the sounds of forest wildlife, create a wonderful introduction to your Mount Rinjani adventure. As you gradually gain elevation, the trail becomes steeper, with regular rest stops arranged by your guide to help you maintain a comfortable pace.",
+      "Around midday, you will take a break in a suitable forest clearing to enjoy a freshly prepared lunch from the Asgard Rinjani Trekking team. After lunch, continue your ascent through the upper rainforest, where the vegetation gradually changes and occasional openings reveal beautiful views of the surrounding mountains.",
+      'By mid-afternoon, you will reach <strong>Senaru Crater Rim (2,641 m)</strong>, one of the most spectacular viewpoints on Mount Rinjani. From the campsite, enjoy magnificent panoramic views of <strong>Segara Anak Lake</strong>, the active <strong>Barujari Volcano</strong>, the dramatic crater walls, and, on clear days, the distant coastline of Lombok.',
+      "Upon arrival, your trekking team will prepare the campsite and arrange your camping facilities. Relax with a warm drink while enjoying the breathtaking sunset over the volcanic landscape. In the evening, enjoy a freshly prepared dinner served by the team before settling into your tent for a comfortable overnight stay.",
+      'Rest well, as an early morning ascent to <strong>Puncak Sangkareang (3,126 m)</strong> awaits you on the following day.',
+    ],
+    timeline: [
+      { time: "07:30 AM", text: "Meet your Asgard Rinjani Trekking guide and team in Senaru before proceeding to the Mount Rinjani National Park entrance (Jebak Gawah)." },
+      { time: "08:30 AM", text: "Begin trekking through the tropical rainforest of Mount Rinjani National Park." },
+      { time: "10:15 AM", text: "Short rest at Pos 1 to relax, hydrate, and enjoy light refreshments." },
+      { time: "12:00 PM", text: "Lunch break in the rainforest with a freshly prepared meal from the trekking team." },
+      { time: "01:00 PM", text: "Continue climbing through the upper rainforest, with several scenic rest stops along the trail." },
+      { time: "03:30 PM", text: "Arrive at <strong>Senaru Crater Rim (2,641 m)</strong>. Enjoy spectacular views while the team prepares your campsite." },
+      { time: "05:30 PM", text: "Enjoy a freshly prepared dinner, followed by sunset viewing and an overnight camping experience at Senaru Crater Rim. Get some rest before tomorrow's early morning ascent to <strong>Second Summit (Puncak Sangkareang, 3,126 m)</strong>." },
+    ],
+  },
+  {
+    day: "Day 2",
+    title: "Day 2: Second Summit (3,126 m) – Return to Senaru Village",
+    paragraphs: [
+      'Your second day begins before sunrise with a wake-up call from your trekking team. After enjoying a warm drink and a light breakfast, prepare for the final ascent to <strong>Puncak Sangkareang (3,126 m)</strong>, also known as Mount Rinjani\'s Second Summit.',
+      "Leaving the campsite with only the essential items for the morning hike, you will follow a volcanic ridge where the surrounding landscape gradually opens up to reveal the magnificent Rinjani caldera.",
+      'After reaching the summit, take time to celebrate your achievement and enjoy one of the finest panoramic views in Lombok. From this remarkable viewpoint, you can admire <strong>Mount Rinjani (3,726 m)</strong>, the turquoise waters of <strong>Segara Anak Lake</strong>, <strong>Barujari Volcano</strong>, the Gili Islands, and, on clear mornings, even Mount Agung in Bali on the horizon.',
+      "After enjoying the sunrise and taking photographs, begin your descent back to Senaru Crater Rim campsite. Upon arrival, enjoy a freshly prepared breakfast before the team organizes the camping equipment for the return journey.",
+      "The adventure then continues downhill through the peaceful tropical rainforest of Mount Rinjani National Park. The cooler forest atmosphere and towering trees provide a refreshing contrast to the rugged volcanic landscape above. Along the way, your guide will share insights about the surrounding environment, native plants, and forest wildlife.",
+      "After reaching the National Park entrance at Jebak Gawah, enjoy a final meal prepared by the Asgard Rinjani Trekking team before concluding your two-day trekking adventure in Senaru.",
+      "Thank you for choosing <strong>Asgard Rinjani Trekking</strong> to accompany you on your Mount Rinjani adventure. We hope this journey has created unforgettable memories of Lombok's spectacular mountain landscapes.",
+    ],
+    timeline: [
+      { time: "03:30 AM", text: "Wake-up call with hot tea or coffee and a light breakfast." },
+      { time: "04:15 AM", text: "Begin the ascent to <strong>Puncak Sangkareang (3,126 m)</strong>." },
+      { time: "06:00 AM", text: "Reach the Second Summit for sunrise and panoramic views across Mount Rinjani National Park." },
+      { time: "07:00 AM", text: "Begin descending back to Senaru Crater Rim campsite." },
+      { time: "08:00 AM", text: "Enjoy a freshly prepared breakfast while the team organizes the camping equipment." },
+      { time: "09:00 AM", text: "Begin the descent through the tropical rainforest toward Senaru." },
+      { time: "11:30 AM", text: "Short rest stop to relax, rehydrate, and enjoy light refreshments." },
+      { time: "12:45 PM", text: "Arrive at the National Park entrance (Jebak Gawah) and enjoy a final freshly prepared meal from the Asgard Rinjani Trekking team." },
+      { time: "01:45 PM", text: "Complete your trekking program in Senaru." },
+      { time: "02:00 PM onwards", text: "End of your Second Summit Trekking adventure with Asgard Rinjani Trekking. Thank you for trekking with us!" },
+    ],
+  },
+];
+
+const gallery = [
+  { src: "/asgard-rinjani-trekking/images/ss12.jpg", alt: "Mount Rinjani volcanic landscape on the Second Summit route" },
+  { src: "/asgard-rinjani-trekking/images/ss09.jpg", alt: "Mountain trail across Rinjani's high volcanic terrain" },
+  { src: "/asgard-rinjani-trekking/images/ss06.jpg", alt: "Scenic highland view along the Rinjani Second Summit route" },
+];
+
+const details = [
+  { label: "Duration", value: "2 Days · 1 Night" },
+  { label: "Starting point", value: "To be confirmed for your route" },
+  { label: "Finishing point", value: "To be confirmed for your route" },
+  { label: "Difficulty", value: "To be confirmed with your guide" },
+  { label: "Maximum elevation", value: "Confirm with the team for your dates" },
+  { label: "Camping location", value: "Confirm with the team for your dates" },
+];
+
+const inclusionGroups = [
+  {
+    title: "Trekking Services",
+    items: [
+      "Professional trekking guide and porter support for shared camping equipment, food, and cooking supplies throughout the trek.",
+      "Mount Rinjani National Park permits and entrance tickets, as confirmed for your departure.",
+      "Round-trip trekking transfers: Transfer from the Senaru meeting point to Senaru Trekking Gate on Day 1, and return transfer from the Senaru trekking exit at Jebak Gawah to the Senaru meeting point on Day 2.",
+    ],
+  },
+  {
+    title: "Meals and Drinks",
+    items: [
+      "Meals shown in the itinerary: Day 1 lunch and dinner; Day 2 breakfast and lunch.",
+      "Drinking water, fresh fruit, tea, and coffee during the trek, subject to the final written package confirmation.",
+    ],
+  },
+  {
+    title: "Camping Equipment",
+    items: [
+      "Mountain camping equipment for one overnight camp, including tents, sleeping bags, mattresses, and pillows.",
+      "Shared cooking and dining equipment and a portable toilet tent at camp, subject to the final written package confirmation.",
+    ],
+  },
+  {
+    title: "Complimentary Trekking Equipment",
+    items: [
+      "Warm jackets, trekking poles, headlamps, and gloves may be available to borrow at no extra charge, subject to availability. Request items in advance and confirm availability with Asgard Rinjani Trekking.",
+    ],
+  },
+];
+
+const exclusionGroups = [
+  {
+    title: "Personal Expenses",
+    items: [
+      "Personal purchases and expenses not listed in the confirmed package inclusions or trek itinerary.",
+    ],
+  },
+  {
+    title: "Personal Trekking Equipment",
+    items: [
+      "Personal clothing, footwear, and trekking equipment. Complimentary equipment loans, if available, are limited to the items and availability confirmed by the team.",
+    ],
+  },
+  {
+    title: "Accommodation",
+    items: [
+      "Accommodation before and after the trekking program is not included in the package price. Guests are responsible for arranging their own hotel or guesthouse in Lombok. If you need accommodation recommendations, please contact our team in advance.",
+    ],
+  },
+  {
+    title: "Tips and Gratuities",
+    items: [
+      "Tips or gratuities for guides, porters, drivers, or other service providers are not included and are at the guest’s discretion.",
+    ],
+  },
+  {
+    title: "Other Exclusions",
+    items: [
+      "Flights to and from Lombok, travel insurance, personal luggage porter service, and any service or cost not expressly listed in the confirmed package inclusions.",
+    ],
+  },
+];
+
+const faqs = [
+  { question: "What is the Second Summit Trek?", answer: "It is a two-day, one-night Mount Rinjani trekking package. The exact route and whether a summit visit is part of the itinerary must be confirmed with the operator." },
+  { question: "How challenging is the Second Summit route?", answer: "Mountain routes can involve steep, uneven terrain and sustained walking. Ask the trekking team for current difficulty guidance and prepare according to their advice." },
+  { question: "Where does the trek start and finish?", answer: "The starting point and finish depend on the confirmed route and operations. Please verify both with Asgard Rinjani Trekking before booking." },
+  { question: "Do I need previous trekking experience?", answer: "Previous trekking experience can be helpful. Discuss your experience and fitness with the team and prepare physically for the confirmed route." },
+  { question: "What should I bring?", answer: "Bring suitable trekking clothing, comfortable hiking footwear, personal essentials, and the equipment listed in the confirmed packing list." },
+  { question: "Are meals and camping equipment included?", answer: "Please refer to the confirmed package inclusions or contact Asgard Rinjani Trekking for the latest details before booking." },
+  { question: "Can the itinerary change because of weather?", answer: "The plan may be adjusted in response to weather, mountain safety, and applicable national park regulations. Confirm current operating guidance with the team." },
+];
+---
+
+<Layout title="Rinjani Second Summit Trek | 2 Days, 1 Night | Asgard" description="Plan a two-day, one-night trek to Mount Rinjani’s Second Summit. Review the route outline, package inclusions and booking details with Asgard Rinjani Trekking." ogImage="/asgard-rinjani-trekking/images/optimized/package-ss03.webp" ogImageAlt="Mount Rinjani summit ridge above the clouds on the Second Summit route">
+  <PackageDetailFrame title={title} heading={"Second Summit"} route={"Second Summit route · exact trail and stops to be confirmed"} subtitle={"Two days. One night. A two-day, one-night journey into Mount Rinjani."} note={"Route details and operating conditions are confirmed with our team before booking."} heroImage={"/asgard-rinjani-trekking/images/optimized/package-ss03.webp"} heroAlt={"Mount Rinjani summit ridge above the clouds"} bookingHref={bookingHref} details={details} gallery={gallery} galleryTitle={"The mountain, unfolding."} galleryDescription={"A glimpse of the Rinjani landscapes found across the route."}>
+
+    <section class="section overview" id="overview" aria-labelledby="overview-title">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow">The journey</p>
+          <h2 class="section-heading" id="overview-title">A journey to <em>the high ridges.</em></h2>
+          <p class="section-copy">Spend two days and one night exploring the Second Summit route on Mount Rinjani. The selected route, daily plan, and logistics will be confirmed with our team for your dates.</p>
+        </div>
+        <dl class="trip-facts">
+          {details.map((item) => <div class="fact"><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
+        </dl>
+        <div class="highlights">
+          <div><p class="eyebrow">At a glance</p><h3>Made for the <em>mountain in view.</em></h3></div>
+          <ul>{highlights.map((item) => <li><span aria-hidden="true">✓</span>{item}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section facilities" aria-labelledby="facilities-title">
+      <div class="container">
+        <div class="section-intro"><p class="eyebrow">Plan with clarity</p><h2 class="section-heading" id="facilities-title"><em>Inclusions.</em></h2><p class="section-copy">Review the services and equipment associated with the trek. Confirm the final written inclusions for your dates and selected booking option before departure.</p></div>
+        <p class="inclusion-note">Transfers between the Senaru meeting point and the Senaru trekking trail points are part of the trekking package. Transportation between other Lombok locations and Senaru is included only when the Trek + Transportation booking option is selected and confirmed. Day 0 accommodation is arranged separately unless an additional service is confirmed in writing.</p>
+        <div class="facility-grid">{inclusionGroups.map((group) => <article><span class="facility-mark" aria-hidden="true">✓</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
+        <div class="section-intro inclusion-subheading"><p class="eyebrow">Plan with clarity</p><h2 class="section-heading"><em>Exclusions.</em></h2><p class="section-copy">The following items are not included unless they are specifically confirmed in writing with your booking.</p></div>
+        <div class="facility-grid">{exclusionGroups.map((group) => <article><span class="facility-mark" aria-hidden="true">–</span><h3>{group.title}</h3><ul>{group.items.map((item) => <li>{item}</li>)}</ul></article>)}</div>
+      </div>
+    </section>
+
+<section class="section itinerary" id="itinerary" aria-labelledby="itinerary-title">
+      <div class="container">
+        <div class="section-intro centered">
+          <p class="eyebrow">Two days on the mountain</p>
+          <h2 class="section-heading" id="itinerary-title">The outline of <em>a summit journey.</em></h2>
+          <p class="section-copy">This is a planning outline. Exact timing, trail, camp, and activities depend on the confirmed operator itinerary and conditions.</p>
+        </div>
+        <ol class="day-list">
+          {itinerary.map((item) => (
+            <li class:list={["day-card", item.day === "Day 0" && "day-card-arrival"]}>
+              <span class="day-index">{item.day === "Day 0" ? item.day : item.day.replace("Day ", "")}</span>
+              <div class="day-card-content">
+                <h3>{item.title}</h3>
+                {item.day === "Day 0" ? (
+                  <>
+                    <p class="arrival-intro">{item.intro}</p>
+                    <div class="arrival-panels">
+                      <section class="arrival-panel" aria-labelledby="pickup-schedule-title">
+                        <h4 id="pickup-schedule-title"><span class="arrival-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3 16.5h18M5 16.5V12l2-5h10l2 5v4.5M7 16.5v2m10-2v2M7 12h10M8.5 9h7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="16.5" r="1" fill="currentColor"/><circle cx="16.5" cy="16.5" r="1" fill="currentColor"/></svg></span>Pick-Up Schedule</h4>
+                        <ul class="arrival-list">{item.pickupSchedule.map((entry) => <li><strong>{entry.location}</strong><span>{entry.time}</span></li>)}</ul>
+                      </section>
+                      <section class="arrival-panel" aria-labelledby="transfer-times-title">
+                        <h4 id="transfer-times-title"><span class="arrival-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.4"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Estimated Transfer Times</h4>
+                        <ul class="arrival-list">{item.transferTimes.map((entry) => <li><strong>{entry.location}</strong><span>{entry.time}</span></li>)}</ul>
+                      </section>
+                    </div>
+                    <aside class="arrival-recommendation"><span class="recommendation-label">Our Recommendation</span><p>{item.recommendation}</p></aside>
+                    <section class="arrival-accommodation" aria-labelledby="overnight-accommodation-title">
+                      <h4 id="overnight-accommodation-title"><span class="arrival-icon" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M3.5 19V8.5L12 4l8.5 4.5V19M2.5 19h19M7 19v-6h10v6M9 10h.01M15 10h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Pre-Trek Accommodation &amp; Briefing</h4>
+                      <p>{item.accommodation}</p>
+                    </section>
+                  </>
+                ) : (
+                  <>
+                    {item.paragraphs.map((paragraph) => <p class="day-description" set:html={paragraph}></p>)}
+                    <h4 class="itinerary-heading">Approximate Timeline</h4>
+                    <div class="itinerary-timeline">
+                      {item.timeline.map((entry) => <p class="itinerary-entry"><strong>{entry.time}</strong><span set:html={`– ${entry.text}`}></span></p>)}
+                    </div>
+                  </>
+                )}
+              </div>
+              <span class="day-mark" aria-hidden="true">→</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    
+
+    
+
+        <section class="section trekking-info" id="trekking-info" aria-labelledby="trekking-info-title">
+      <div class="container">
+        <div class="section-intro"><p class="eyebrow">Plan with confidence</p><h2 class="section-heading" id="trekking-info-title">Important Information <em>Before Your Trek.</em></h2><p class="section-copy">Routes, schedules, and operating plans can change with mountain conditions and park guidance. Confirm the final meeting point, route, camping plan, packing list, and package arrangements with our team before departure.</p></div>
+        <div class="info-grid">
+          <article><span class="info-label">What to Bring</span><p>Bring suitable trekking clothing, comfortable hiking footwear, personal essentials, and all items listed in the confirmed packing list. Ask the team for the route-specific list before departure.</p></article>
+          <article><span class="info-label">Free Trekking Equipment</span><p>At Asgard Rinjani Trekking, we want every guest to feel comfortable and well-prepared throughout their Mount Rinjani adventure.</p><p>To help make your trekking experience more convenient, we provide complimentary equipment loans for the following items, subject to availability:</p><ul class="equipment-loan-list"><li>Warm trekking jackets.</li><li>Trekking poles.</li><li>Headlamps.</li><li>Gloves.</li><li>All other equipment listed in the Inclusions section.</li></ul><p>Guests who require any of these items are encouraged to inform our team in advance so we can check availability and prepare the equipment before departure.</p><p>Please note that these items are provided as complimentary loans and must be returned to our team after the trekking program.</p><p>We recommend bringing your own personal trekking shoes, comfortable hiking clothes, and other essential personal equipment.</p></article>
+          <article><span class="info-label">Additional Information</span><p>This two-day, one-night trekking adventure begins in Senaru and takes you through the beautiful tropical rainforest of Mount Rinjani National Park before reaching <strong>Senaru Crater Rim (2,641 m)</strong>, where you will spend the night at a scenic campsite overlooking Segara Anak Lake and the surrounding volcanic landscape.</p><p>The trekking route includes a gradual climb through the forest, followed by steeper sections as you gain elevation. Your guide will arrange regular rest stops to help maintain a comfortable trekking pace.</p><p>The highlight of the second day is the early morning ascent to <strong>Puncak Sangkareang (3,126 m)</strong>, also known as Mount Rinjani's Second Summit. From the summit, enjoy spectacular views of Mount Rinjani, Segara Anak Lake, Barujari Volcano, the Gili Islands, and, on clear mornings, Mount Agung in Bali.</p><p>After returning to the campsite for breakfast, you will descend through the tropical rainforest toward the Senaru National Park entrance (Jebak Gawah), where your two-day trekking adventure comes to an end.</p><p>Please note that all schedules provided in the itinerary are approximate. Summit views and distant landscapes depend on morning visibility and weather conditions.</p></article>
+          <article><span class="info-label">Why Choose Asgard Rinjani Trekking?</span><p>Plan your Mount Rinjani journey with a local Lombok trekking team. Contact us for route-specific preparation guidance and to confirm the arrangements for your dates.</p></article>
+        </div>
+      </div>
+    </section><section class="section faq" aria-labelledby="faq-title">
+      <div class="container faq-container">
+        <header class="faq-heading">
+          <p class="eyebrow">Frequently Asked Questions</p>
+          <h2 class="section-heading" id="faq-title">Everything You Need to <em>Know.</em></h2>
+          <p class="section-copy">A few helpful details as you prepare for the Second Summit Trek.</p>
+        </header>
+        <div class="faq-list">
+          {faqs.map((faq, index) => (
+            <article class="faq-item">
+              <h3>
+                <button class="faq-trigger" type="button" id={`faq-trigger-${index}`} aria-expanded="false" aria-controls={`faq-panel-${index}`}>
+                  <span>{faq.question}</span><span class="faq-icon" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="faq-panel" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-trigger-${index}`} aria-hidden="true" inert>
+                <div class="faq-panel-inner"><p>{faq.answer}</p></div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="route-showcase" aria-labelledby="route-showcase-title">
+      <div class="container route-showcase-container">
+        <header class="route-showcase-heading">
+          <p class="eyebrow">EXPLORE MOUNT RINJANI</p>
+          <h2 class="section-heading" id="route-showcase-title">Explore Your Rinjani Route</h2>
+          <p class="section-copy">Trace the Second Summit route across Rinjani’s highland terrain, with the trail and viewpoints revealed along the way.</p>
+        </header>
+        <figure class="route-showcase-map">
+          <img src="/asgard-rinjani-trekking/images/rinjani%20map/Rinjani%20Second%20Summit%20Route%20Map.png" alt="Rinjani Second Summit trekking route map" loading="lazy" decoding="async" />
+        </figure>
+        <p class="route-showcase-caption">RINJANI SECOND SUMMIT ROUTE</p>
+      </div>
+    </section>
+  </PackageDetailFrame>
+</Layout>
+
+<style>
+  .hero{position:relative;min-height:min(850px,100svh);min-height:max(690px,92svh);display:flex;align-items:center;overflow:hidden;background:#080908;padding:calc(var(--header-h) + 72px) 0 100px}
+  .hero-image,.hero-shade{position:absolute;inset:0;width:100%;height:100%}.hero-image{object-fit:cover;object-position:center 48%;animation:reveal 1.5s ease both}.hero-shade{background:linear-gradient(90deg,rgba(5,6,5,.85),rgba(5,6,5,.45) 58%,rgba(5,6,5,.08)),linear-gradient(0deg,#080908 0%,transparent 45%,rgba(4,5,4,.2))}
+  .hero-content{position:relative;z-index:1;max-width:1180px;animation:rise .9s .12s both}.hero h1{font:500 clamp(4.4rem,10vw,9rem)/.88 var(--font-display);letter-spacing:-.045em;color:#fff;margin:0 0 25px}.hero h1 em,.section-heading em,.highlights h3 em{color:var(--gold-soft);font-weight:500}.hero-subtitle{max-width:590px;color:#eee7d9;font:400 clamp(1.25rem,2.4vw,1.7rem)/1.45 var(--font-display);margin:0 0 10px}.hero-note{font-size:.82rem;color:#c0baae;margin:0 0 27px}.actions{display:flex;gap:13px;flex-wrap:wrap}.actions .btn{min-height:54px}.scroll-cue{position:absolute;z-index:1;bottom:32px;left:max(5vw,calc((100vw - 1180px)/2));display:flex;gap:12px;align-items:center;color:#e6dfd1;text-decoration:none;text-transform:uppercase;font-size:.63rem;letter-spacing:.2em}.scroll-cue span{width:1px;height:34px;background:var(--gold)}
+  .section{padding:64px 0}.overview{background:#0b0c0b}.section-intro{max-width:700px;margin-bottom:30px}.section-heading{font-size:clamp(2.8rem,5vw,4.8rem);margin-bottom:18px}.trip-facts{display:grid;grid-template-columns:repeat(4,1fr);margin:0;border-block:1px solid var(--line)}.fact{padding:23px 20px 25px 0}.fact dt{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.fact dd{margin:0;color:var(--cream);font:500 1.35rem/1.25 var(--font-display)}
+  .highlights{display:grid;grid-template-columns:.85fr 1.15fr;gap:8%;align-items:center;padding-top:40px}.highlights h3{font:500 clamp(2.15rem,4vw,3.5rem)/1.08 var(--font-display);color:var(--cream);margin:0;max-width:390px}.highlights ul{list-style:none;margin:0;padding:0}.highlights li{display:flex;gap:15px;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.09);color:#d0c9bc}.highlights li span{color:var(--gold);font-size:.85rem}
+  .itinerary{background:linear-gradient(180deg,#111210,#0b0c0b)}.centered{text-align:center;margin-inline:auto}.centered .section-copy{margin-inline:auto}.day-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}.day-card{display:grid;grid-template-columns:125px 1fr 35px;gap:25px;align-items:start;padding:30px 12px;border-bottom:1px solid var(--line);transition:background .3s,padding .3s}.day-card:hover{background:rgba(212,175,55,.035);padding-inline:20px}.day-index{color:var(--gold);font-size:.68rem;letter-spacing:.18em;padding-top:7px}.day-card h3{font:500 clamp(1.65rem,3vw,2.25rem)/1.15 var(--font-display);color:var(--cream);margin:0 0 8px}.day-card p{max-width:680px;margin:0;color:var(--text-muted);font-size:.92rem}.day-card .day-description{max-width:760px;margin:0 0 16px;color:#c3c8bd;font-size:.9rem;line-height:1.75}.itinerary-heading{margin:22px 0 10px;color:var(--gold-soft);font:500 1.1rem/1.3 var(--font-display)}.itinerary-timeline{max-width:760px}.day-card .itinerary-entry{position:relative;display:grid;grid-template-columns:145px minmax(0,1fr);gap:12px;align-items:baseline;max-width:none;margin-top:10px;padding-left:16px;font-size:.9rem;line-height:1.7}.day-card .itinerary-entry::before{position:absolute;top:.68em;left:1px;width:6px;height:6px;border-radius:50%;background:#D4AF37;content:""}.day-card .itinerary-entry strong{color:#D4AF37;font-weight:600;white-space:nowrap}.day-card .itinerary-entry span{color:var(--text-muted)}.day-mark{color:var(--gold-deep);font-size:1.15rem}
+  .gallery{background:#0b0c0b}.gallery-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}.gallery-head .section-copy{max-width:310px;padding-bottom:8px}.gallery-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:14px}.gallery-grid figure{height:310px;margin:0;overflow:hidden;border:1px solid var(--line);background:#12110e}.gallery-grid img{width:100%;height:100%;object-fit:cover;filter:saturate(.82);transition:transform .7s ease,filter .5s}.gallery-grid figure:hover img{transform:scale(1.045);filter:saturate(1)}
+  .facilities{background:linear-gradient(180deg,#10110f,#080908)}.facility-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.facility-grid article{padding:32px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008))}.facility-mark{color:var(--gold);font-size:.9rem}.facility-grid h3{font:500 2rem/1.1 var(--font-display);color:var(--cream);margin:14px 0 9px}.facility-grid p{color:var(--text-muted);margin:0;max-width:480px}.facility-grid ul{margin:0;padding:0;list-style:none}.facility-grid li{position:relative;padding:11px 0 11px 17px;border-top:1px solid rgba(212,175,55,.13);color:var(--text-muted);font-size:.9rem;line-height:1.65}.facility-grid li::before{content:"";position:absolute;top:1.35em;left:1px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .inclusion-subheading{margin-top:54px}
+  .faq{background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.055),transparent 55%),#0a0b0a}.faq-container{max-width:900px}.faq-heading{text-align:center;margin:0 auto 30px}.faq-heading .section-copy{margin-inline:auto}.faq-list{border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-item h3{margin:0}.faq-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;gap:22px;padding:23px 4px;border:0;background:transparent;color:var(--cream);text-align:left;font:500 clamp(1.15rem,2.3vw,1.45rem)/1.35 var(--font-display);cursor:pointer;transition:color .25s}.faq-trigger:hover,.faq-trigger[aria-expanded="true"]{color:var(--gold-soft)}.faq-trigger:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}.faq-icon{position:relative;flex:0 0 24px;width:24px;height:24px;border:1px solid rgba(212,175,55,.58);border-radius:50%;color:var(--gold);transition:transform .3s,border-color .3s}.faq-icon::before,.faq-icon::after{content:"";position:absolute;left:6px;top:10px;width:10px;height:1px;background:currentColor}.faq-icon::after{transform:rotate(90deg);transition:transform .3s}.faq-trigger[aria-expanded="true"] .faq-icon{border-color:var(--gold)}.faq-trigger[aria-expanded="true"] .faq-icon::after{transform:rotate(0)}.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}.faq-panel-inner{overflow:hidden;min-height:0}.faq-panel-inner p{max-width:760px;margin:0;padding:0 44px 22px 4px;color:var(--text-muted);font-size:.96rem;line-height:1.8}.faq-item:has(.faq-trigger[aria-expanded="true"]) .faq-panel{grid-template-rows:1fr}
+  .route-showcase{padding:clamp(64px,9vw,108px) 0;background:linear-gradient(180deg,#0b0c0b,#10110f 48%,#0b0c0b)}.route-showcase-container{width:min(1100px,calc(100% - 10vw));margin-inline:auto;text-align:center}.route-showcase-heading{max-width:850px;margin:0 auto clamp(28px,4vw,44px)}.route-showcase-heading .eyebrow{color:var(--gold);font-size:.68rem;letter-spacing:.2em}.route-showcase-heading .section-heading{font-size:clamp(2.35rem,5vw,4.3rem);line-height:1.02;color:var(--cream);white-space:nowrap}.route-showcase-heading .section-copy{max-width:760px;margin-inline:auto}.route-showcase-map{width:100%;margin:0;padding:clamp(8px,1.5vw,16px);border:1px solid rgba(212,175,55,.45);border-radius:12px;background:#070908;box-shadow:0 20px 55px rgba(0,0,0,.28)}.route-showcase-map img{display:block;width:100%;height:auto;object-fit:contain;border-radius:6px}.route-showcase-caption{margin:26px 0 0;color:var(--gold-soft);font:500 clamp(.78rem,1.6vw,1rem)/1.4 var(--font-display);letter-spacing:.12em}
+  
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes reveal{from{opacity:.65;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+  @media(max-width:850px){.trip-facts{grid-template-columns:repeat(2,1fr)}.fact:nth-child(odd){border-right:1px solid var(--line)}.fact:nth-child(even){padding-left:22px}.fact:nth-child(n+3){border-top:1px solid rgba(212,175,55,.12)}.highlights{grid-template-columns:1fr;gap:26px}.gallery-grid figure{height:250px}}
+  @media(max-width:620px){.hero{min-height:760px;min-height:94svh;padding:calc(var(--header-h) + 60px) 0 100px}.hero-image{object-position:58% center}.hero-shade{background:linear-gradient(90deg,rgba(5,6,5,.78),rgba(5,6,5,.35)),linear-gradient(0deg,#080908 0%,transparent 62%)}.hero h1{font-size:clamp(4rem,16vw,6.1rem)}.hero-subtitle{font-size:1.35rem}.actions{display:grid}.actions .btn{width:100%}.scroll-cue{left:6vw;bottom:24px}.section{padding:40px 0}.section-intro{margin-bottom:24px}.trip-facts{grid-template-columns:1fr 1fr}.fact{padding-block:18px}.fact dd{font-size:1.18rem}.highlights{padding-top:30px}.day-card{grid-template-columns:68px 1fr;gap:14px;padding:23px 2px}.day-card:hover{padding-inline:7px}.day-mark{display:none}.day-card p{font-size:.86rem}.day-card .itinerary-entry{grid-template-columns:112px minmax(0,1fr);gap:8px;font-size:.82rem}.itinerary-heading{margin-top:18px}.gallery-head{display:block}.gallery-head .section-copy{margin-top:12px}.gallery-grid{grid-template-columns:1fr 1fr;gap:9px}.gallery-grid figure{height:175px}.gallery-grid figure:first-child{grid-column:span 2}.facility-grid{grid-template-columns:1fr}.facility-grid article{padding:25px}}
+  @media(max-width:620px){.faq-heading{text-align:left}.faq-heading .section-copy{margin-inline:0}.faq-trigger{padding:20px 2px;gap:14px}.faq-panel-inner p{padding:0 35px 19px 2px;font-size:.9rem}}
+  @media(max-width:620px){.route-showcase-heading .section-heading{font-size:clamp(1.8rem,7vw,2.55rem);line-height:1.08;white-space:normal;overflow-wrap:normal}}
+  @media(prefers-reduced-motion:reduce){.hero-image,.hero-content{animation:none}.gallery-grid img,.day-card{transition:none}.gallery-grid figure:hover img{transform:none}}
+  @media(prefers-reduced-motion:reduce){.faq-panel,.faq-icon,.faq-icon::after{transition:none}}
+  main{max-width:100%;overflow-x:clip}
+  .hero-content,.container,.section-intro,.trip-facts,.fact,.highlights,.day-card,.day-card>div,.gallery-head,.gallery-grid,.facility-grid,.facility-grid article,.faq-container,.faq-item,.faq-trigger,.faq-panel-inner{min-width:0}
+  @media(max-width:620px){
+    .hero-content{width:90%;max-width:100%}
+    .hero h1{font-size:clamp(3.15rem,14vw,5rem);line-height:.94;overflow-wrap:anywhere}
+    .hero-subtitle{max-width:100%;font-size:1.22rem;overflow-wrap:anywhere}
+    .section-heading{font-size:clamp(2.35rem,10.5vw,3.35rem);overflow-wrap:anywhere}
+    .trip-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .fact{padding-right:10px}
+    .fact:nth-child(even){padding-left:14px}
+    .fact dd{font-size:1.08rem;overflow-wrap:anywhere}
+    .highlights li{align-items:flex-start;overflow-wrap:anywhere}
+    .day-card{grid-template-columns:58px minmax(0,1fr);gap:12px}
+    .day-card h3{font-size:1.55rem;overflow-wrap:anywhere}
+    .day-card p,.faq-panel-inner p{overflow-wrap:anywhere}
+    .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .gallery-grid figure{height:auto;aspect-ratio:1.08}
+    .gallery-grid figure:first-child{grid-column:span 2;aspect-ratio:1.8}
+    .faq-trigger{min-height:56px}
+    .faq-trigger>span:first-child{min-width:0;overflow-wrap:anywhere}
+    .actions .btn{min-height:54px}
+  }
+    .day-card-content{min-width:0}.day-card-arrival{padding-top:34px;padding-bottom:36px}.arrival-intro{max-width:760px!important;margin:0 0 22px!important;color:#c3c8bd!important;line-height:1.75}.arrival-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.arrival-panel,.arrival-accommodation{min-width:0;padding:20px;border:1px solid rgba(212,175,55,.2);background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.008))}.arrival-panel h4,.arrival-accommodation h4{display:flex;align-items:center;gap:10px;margin:0 0 15px;color:var(--cream);font:500 1.25rem/1.2 var(--font-display)}.arrival-icon{display:grid;place-items:center;flex:none;width:34px;height:34px;border:1px solid rgba(212,175,55,.3);border-radius:50%;color:var(--gold-soft)}.arrival-icon svg{width:19px;height:19px}.arrival-list{margin:0;padding:0;list-style:none}.arrival-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;padding:10px 0;border-top:1px solid rgba(212,175,55,.12);font-size:.78rem;line-height:1.5}.arrival-list li strong{color:#d9d5c9;font-weight:500}.arrival-list li span{color:#b9b5a9;text-align:right}.arrival-recommendation{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;margin-top:13px;padding:16px 19px;border-left:2px solid var(--gold);background:linear-gradient(100deg,rgba(212,175,55,.09),rgba(255,255,255,.015))}.recommendation-label{padding-top:2px;color:var(--gold-soft);font-size:.64rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase}.arrival-recommendation p,.arrival-accommodation p{max-width:none!important;margin:0!important;color:#c3c8bd!important;font-size:.84rem!important;line-height:1.7!important}.arrival-accommodation{margin-top:13px}.arrival-accommodation h4{margin-bottom:10px}@media(max-width:620px){.day-card-arrival{padding-top:25px;padding-bottom:27px}.arrival-intro{margin-bottom:17px!important}.arrival-panels{grid-template-columns:minmax(0,1fr);gap:10px}.arrival-panel,.arrival-accommodation{padding:16px}.arrival-panel h4,.arrival-accommodation h4{font-size:1.15rem}.arrival-list li{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;font-size:.75rem}.arrival-recommendation{grid-template-columns:minmax(0,1fr);gap:6px;padding:14px}}
+
+  @media(max-width:620px){
+    .day-card:has(.itinerary-timeline) .itinerary-heading{width:calc(100% + 70px);margin-left:-70px;text-align:center}
+    .day-card .itinerary-timeline{width:calc(100% + 70px);max-width:none;margin-left:-70px}
+    .day-card .itinerary-entry{grid-template-columns:minmax(0,1fr);gap:2px;align-items:start;margin-top:12px;padding-left:16px;min-width:0}
+    .day-card .itinerary-entry strong,.day-card .itinerary-entry span{grid-column:1;min-width:0}
+    .day-card .itinerary-entry span{display:block}
+  }
+</style>
+
+<script>
+  const faqTriggers = document.querySelectorAll<HTMLButtonElement>(".faq-trigger");
+
+  faqTriggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const willExpand = trigger.getAttribute("aria-expanded") !== "true";
+
+      faqTriggers.forEach((item) => {
+        const panel = document.getElementById(item.getAttribute("aria-controls") ?? "");
+        item.setAttribute("aria-expanded", "false");
+        panel?.setAttribute("aria-hidden", "true");
+        panel?.setAttribute("inert", "");
+      });
+
+      if (willExpand) {
+        const panel = document.getElementById(trigger.getAttribute("aria-controls") ?? "");
+        trigger.setAttribute("aria-expanded", "true");
+        panel?.setAttribute("aria-hidden", "false");
+        panel?.removeAttribute("inert");
+      }
+    });
+  });
+</script>

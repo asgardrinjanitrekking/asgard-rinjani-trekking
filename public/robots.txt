@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /asgard-rinjani-trekking/
+
+Sitemap: https://asgardrinjanitrekking.github.io/asgard-rinjani-trekking/sitemap.xml
